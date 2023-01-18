@@ -9,4 +9,19 @@ class Game
   def recieve_code
     @code = @coder.create_code
   end
+
+  def recieve_guess
+    @guess = @breaker.guess_code
+  end
+
+  def compare_codes
+    recieve_guess
+    if @guess == @code
+      puts "Correct!"
+    else
+      @turns_left -= 1
+      puts "Try again. #{@turns_left} tries left!"
+    end
+    compare_codes
+  end
 end
