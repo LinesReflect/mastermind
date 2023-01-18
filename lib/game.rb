@@ -6,6 +6,12 @@ class Game
     @coder = coder
   end
 
+  def start_game
+    @turns_left = 15
+    recieve_code
+    compare_codes
+  end
+
   def recieve_code
     @code = @coder.create_code
   end
