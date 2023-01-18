@@ -5,4 +5,8 @@ class Game
     @breaker = breaker
     @coder = coder
   end
+
+  def recieve_code
+    @code = @coder.create_code
+  end
 end
