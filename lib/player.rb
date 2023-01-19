@@ -8,6 +8,6 @@ class Player
   def guess_code
     puts "Enter a valid guess."
     @guess = gets.chomp
-    @guess.to_s.length == 4 ? @guess.split : guess_code
+    @guess.to_s.length == 4 ? @guess.to_s.split(//) : guess_code
   end
 end
