@@ -1,13 +1,12 @@
+require_relative "breaker.rb"
+require_relative "coder.rb"
+
 class Player
+  include Breaker
+  include Coder
   attr_accessor :role
 
   def initialize(role)
     @role = role
-  end
-
-  def guess_code
-    puts "Enter a valid guess."
-    @guess = gets.chomp
-    @guess.length == 4 ? @guess.split(//) : guess_code
   end
 end

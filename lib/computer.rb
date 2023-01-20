@@ -1,4 +1,9 @@
+require_relative "breaker.rb"
+require_relative "coder.rb"
+
 class Computer
+  include Breaker
+  include Coder
   attr_accessor :role
 
   def initialize(role)
