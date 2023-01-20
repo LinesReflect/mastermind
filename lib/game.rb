@@ -10,7 +10,7 @@ class Game
     @turns_left = 15
     @feedback = Array.new(4, "")
     recieve_code
-    compare_codes
+    recieve_guess
   end
 
   def recieve_code
@@ -21,17 +21,11 @@ class Game
   def recieve_guess
     @guess = @breaker.guess_code
     @guess = @guess.map { |num| num.to_i }
+    compare_codes
   end
 
   def compare_codes
-    recieve_guess
-    if @guess == @code
-      puts "Correct!"
-    else
-      @turns_left -= 1
-      print give_feedback(@code, @guess)
-    end
-    compare_codes
+    print winner? ? breaker_won : next_turn
   end
 
   def give_feedback(code, guess)
@@ -42,5 +36,33 @@ class Game
       end
     end
     return @feedback
+  end
+
+  def winner?
+    @guess == @code
+  end
+
+  def breaker_won
+    puts "Congrats breaker, you cracked the code. It was: #{@code.join("")}!"
+    end_game
+  end
+
+  def coder_won
+    puts "Congrats coder, your code was not cracked! The code was: #{@code.join("")}!"
+    end_game
+  end
+
+  def next_turn
+    @turns_left -= 1
+    print "#{give_feedback(@code, @guess)}, #{@turns_left} turns left."
+    no_turns_left? ? coder_won : recieve_guess
+  end
+
+  def no_turns_left?
+    @turns_left.zero?
+  end
+
+  def end_game
+    return
   end
 end
