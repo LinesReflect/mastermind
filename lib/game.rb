@@ -15,11 +15,12 @@ class Game
 
   def recieve_code
     @code = @coder.create_code
+    @code = @code.map { |num| num.to_i }
     print @code
   end
 
   def recieve_guess
-    @guess = @breaker.guess_code
+    @guess = @breaker.guess_code(@feedback)
     @guess = @guess.map { |num| num.to_i }
     compare_codes
   end
@@ -54,7 +55,7 @@ class Game
 
   def next_turn
     @turns_left -= 1
-    print "#{give_feedback(@code, @guess)}, #{@turns_left} turns left."
+    puts "#{give_feedback(@code, @guess)}, #{@turns_left} turns left."
     no_turns_left? ? coder_won : recieve_guess
   end
 
