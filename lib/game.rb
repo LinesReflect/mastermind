@@ -7,7 +7,7 @@ class Game
   end
 
   def start_game
-    @turns_left = 15
+    @turns_left = 12
     @feedback = Array.new(4, "")
     recieve_code
     recieve_guess
