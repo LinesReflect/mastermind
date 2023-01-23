@@ -6,6 +6,7 @@ def mastermind
   puts "Welcome to Mastermind! Please choose a role."
   puts "1: Breaker or 2: Coder"
   choose_role
+  another_game
 end
 
 def choose_role
@@ -22,6 +23,12 @@ def choose_role
     puts "Not a valid response. Choose 1 for Breaker or 2 for Coder!"
     choose_role
   end
+end
+
+def another_game
+  puts "Would you like to play another game? Y/N"
+  response = gets.chomp
+  response == ("Y" || "y") ? mastermind : return
 end
 
 mastermind
