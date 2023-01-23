@@ -9,7 +9,8 @@ class Computer
 
   def initialize(role)
     @role = role
-    @guessed_numbers = []
+    @possible_numbers = [*0..9]
+    @included_numbers = []
   end
 
   def random_numbers(arr)
@@ -23,12 +24,13 @@ class Computer
   end
 
   def guess_code(feedback)
-    @guess = Array.new(4, "")
-    if feedback
-      sleep(2)
-      educated_guess(feedback)
-    else
+    print "Thinking..."
+    sleep(2)
+    if feedback.any? { |data| data == "" }
+      @guess = Array.new(4, "")
       random_numbers(@guess)
+    else
+      educated_guess(feedback)
     end
     puts @guess.join("")
     @guess
@@ -37,11 +39,13 @@ class Computer
   def educated_guess(data)
     data.map.with_index do |num, idx|
       if num.instance_of? Integer
-        @guess[idx] = num
+        @guess[idx] = @guess[idx]
       elsif num == "O"
-        @guess[idx + 1] = num
+        @included_numbers.push(@guess[idx]) if @included_numbers.none?(@guess[idx])
+        @guess[idx] = @possible_numbers.sample
       else
-        @guess[idx] = rand(0..9)
+        @possible_numbers.delete(@guess[idx])
+        @guess[idx] = @included_numbers.empty? ? @possible_numbers.sample : @included_numbers.sample
       end
     end
   end

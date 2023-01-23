@@ -32,7 +32,7 @@ class Game
   def give_feedback(code, guess)
     code.map.with_index do |num, idx|
       if @feedback[idx].instance_of? String
-        @feedback[idx] = (guess.include?(num) ? "O" : "X")
+        @feedback[idx] = (code.include?(guess[idx]) ? "O" : "X")
         @feedback[idx] = num if num == guess[idx]
       end
     end
