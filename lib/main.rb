@@ -28,7 +28,7 @@ end
 def another_game
   puts "Would you like to play another game? Y/N"
   response = gets.chomp
-  response == ("Y" || "y") ? mastermind : return
+  ["Y", "y"].include?(response) ? mastermind : return
 end
 
 mastermind

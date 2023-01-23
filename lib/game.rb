@@ -16,7 +16,6 @@ class Game
   def recieve_code
     @code = @coder.create_code
     @code = @code.map { |num| num.to_i }
-    print @code
   end
 
   def recieve_guess
