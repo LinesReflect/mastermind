@@ -2,8 +2,8 @@ require_relative "game.rb"
 require_relative "player.rb"
 require_relative "computer.rb"
 
-def begin_game
-  puts "Welcome ro Mastermind! Please choose a role."
+def mastermind
+  puts "Welcome to Mastermind! Please choose a role."
   puts "1: Breaker or 2: Coder"
   choose_role
 end
@@ -24,4 +24,4 @@ def choose_role
   end
 end
 
-begin_game
+mastermind
