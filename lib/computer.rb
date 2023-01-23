@@ -1,6 +1,6 @@
 
-require_relative "breaker.rb"
-require_relative "coder.rb"
+require_relative "breaker"
+require_relative "coder"
 
 class Computer
   include Breaker

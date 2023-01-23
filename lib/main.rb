@@ -1,6 +1,6 @@
-require_relative "game.rb"
-require_relative "player.rb"
-require_relative "computer.rb"
+require_relative "game"
+require_relative "player"
+require_relative "computer"
 
 def mastermind
   puts "Welcome to Mastermind! Please choose a role."
