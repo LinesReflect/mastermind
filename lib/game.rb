@@ -7,10 +7,18 @@ class Game
   end
 
   def start_game
+    rules
     @turns_left = 12
     @feedback = Array.new(4, "")
     recieve_code
     recieve_guess
+  end
+
+  def rules
+    puts "Feedback:
+      A shown number means you have a correct number and it is in the correct spot.
+      An 'O' means you have a correct number in an incorrect spot.
+      An 'X' means that number is not in the secret code."
   end
 
   def recieve_code
